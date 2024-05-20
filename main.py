@@ -12,6 +12,7 @@ from fastapi.staticfiles import StaticFiles
 from routers.auth import get_user_info
 from schemas import userPayload
 from routers.generative_ai import generative_ai
+from routers.segmentation_object_detection import segmentation_object_detection
 
 
 load_dotenv()
@@ -46,6 +47,7 @@ async def root(user: userPayload = Depends(get_user_info)):
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
 app.include_router(generative_ai.router)
+app.include_router(segmentation_object_detection.router)
 
 
 if __name__ == '__main__':
