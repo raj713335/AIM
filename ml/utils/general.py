@@ -312,7 +312,7 @@ def git_describe(path=ROOT):  # path must be a directory
 
 @TryExcept()
 @WorkingDirectory(ROOT)
-def check_git_status(repo='WongKinYiu/yolov9', branch='main'):
+def check_git_status(repo='WongKinYiu/yoloV9', branch='main'):
     # YOLO status check, recommend 'git pull' if code is out of date
     url = f'https://github.com/{repo}'
     msg = f', for updates see {url}'

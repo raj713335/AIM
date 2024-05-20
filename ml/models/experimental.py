@@ -156,7 +156,7 @@ class ONNX_ORT(nn.Module):
     def forward(self, x):
         ## https://github.com/thaitc-hust/yolov9-tensorrt/blob/main/torch2onnx.py
         ## thanks https://github.com/thaitc-hust
-        if isinstance(x, list):  ## yolov9-c.pt and yolov9-e.pt return list
+        if isinstance(x, list):  ## yoloV9-c.pt and yoloV9-e.pt return list
             x = x[1]
         x = x.permute(0, 2, 1)
         bboxes_x = x[..., 0:1]
@@ -199,7 +199,7 @@ class ONNX_TRT(nn.Module):
     def forward(self, x):
         ## https://github.com/thaitc-hust/yolov9-tensorrt/blob/main/torch2onnx.py
         ## thanks https://github.com/thaitc-hust
-        if isinstance(x, list):  ## yolov9-c.pt and yolov9-e.pt return list
+        if isinstance(x, list):  ## yoloV9-c.pt and yoloV9-e.pt return list
             x = x[1]
         x = x.permute(0, 2, 1)
         bboxes_x = x[..., 0:1]
