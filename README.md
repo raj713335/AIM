@@ -77,6 +77,49 @@ $ npm i
 </p>
 
 
+## YoloV9 Object Segmentation & Detection Metrics
+
+<br />
+<p align="center">
+  <img src="data/yoloV9/BoxF1_curve.png" width="200"/>
+  <img src="data/yoloV9/BoxP_curve.png" width="200"/>
+  <img src="data/yoloV9/BoxPR_curve.png" width="200"/>
+  <img src="data/yoloV9/BoxR_curve.png" width="200"/>
+  <img src="data/yoloV9/confusion_matrix.png" width="200"/>
+  <img src="data/yoloV9/labels.jpg" width="200"/>
+  <img src="data/yoloV9/labels_correlogram.jpg" width="200"/>
+  <img src="data/yoloV9/MaskF1_curve.png" width="200"/>
+  <img src="data/yoloV9/MaskP_curve.png" width="200"/>
+  <img src="data/yoloV9/MaskPR_curve.png" width="200"/>
+  <img src="data/yoloV9/MaskR_curve.png" width="200"/>
+  <img src="data/yoloV9/results.png" width="200"/>
+</p>
+<br />
+
+#### Train Batch/ Results 
+
+<br />
+<p align="center">
+  <img src="data/yoloV9/train_batch0.jpg" width="200"/>
+  <img src="data/yoloV9/train_batch1.jpg" width="200"/>
+  <img src="data/yoloV9/train_batch2.jpg" width="200"/>
+</p>
+<br />
+
+#### Validation Batch/ Results 
+
+<br />
+<p align="center">
+  <img src="data/yoloV9/val_batch0_labels.jpg" width="200"/>
+  <img src="data/yoloV9/val_batch0_pred.jpg" width="200"/>
+  <img src="data/yoloV9/val_batch1_labels.jpg" width="200"/>
+  <img src="data/yoloV9/val_batch1_pred.jpg" width="200"/>
+  <img src="data/yoloV9/val_batch2_labels.jpg" width="200"/>
+  <img src="data/yoloV9/val_batch2_pred.jpg" width="200"/>
+</p>
+<br />
+
+
 
 ## 8. Components to be built (Work In Progress)
 
