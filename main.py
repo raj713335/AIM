@@ -51,5 +51,5 @@ app.include_router(segmentation_object_detection.router)
 
 
 if __name__ == '__main__':
-    uvicorn.run("main:app", host=os.getenv("HIFI_APP_HOST", "localhost"), port=int(os.getenv("HIFI_APP_PORT", 5000)),
+    uvicorn.run("main:app", host=os.getenv("AIM_APP_HOST", "localhost"), port=int(os.getenv("AIM_APP_PORT", 5000)),
                 reload=True)
