@@ -1,0 +1,20 @@
+
+train: ./data/train
+val: ./data/valid
+test: ./data/test
+
+names:
+  0: crack
+  1: dent
+  2: missing-head
+  3: paint-off
+  4: scratch
+
+
+
+#roboflow:
+#  workspace: youssef-donia-fhktl
+#  project: aircraft-damage-detection-2
+#  version: 3
+#  license: CC BY 4.0
+#  url: https://universe.roboflow.com/youssef-donia-fhktl/aircraft-damage-detection-2/dataset/3
