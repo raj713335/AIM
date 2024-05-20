@@ -31,7 +31,7 @@ async def image_explainer(file: UploadFile = File()):
         #     raise HTTPException(status_code=401, detail='Authentication Failed')
 
         data = await file.read()
-        file_name = f"{os.path.splitext(file.filename)[1]}"
+        file_name = f"{os.path.splitext(file.filename)[0]}{os.path.splitext(file.filename)[1]}"
         # Create a file path with the media folder
         file_path = f"static/dumps/{file_name}"
         # Save the file to the folder
