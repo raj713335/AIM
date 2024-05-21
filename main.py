@@ -13,6 +13,7 @@ from routers.auth import get_user_info
 from schemas import userPayload
 from routers.generative_ai import generative_ai
 from routers.segmentation_object_detection import segmentation_object_detection
+from routers.airline import airline
 from routers.aircraft import aircraft
 from routers.airbus import airbus
 
@@ -50,6 +51,7 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 
 app.include_router(generative_ai.router)
 app.include_router(segmentation_object_detection.router)
+app.include_router(airline.router)
 app.include_router(aircraft.router)
 app.include_router(airbus.router)
 
