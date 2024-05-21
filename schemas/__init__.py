@@ -1,4 +1,5 @@
 from schemas.authConfiguration import authConfiguration
 from schemas.airlineSchema import airlineSchema, validate_airlineSchema
+from schemas.airportSchema import airportSchema
 from schemas.aircraftSchema import aircraftSchema, aircraftPartSchema
 from schemas.airbusSchema import sellAircraftSchema
