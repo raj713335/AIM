@@ -9,4 +9,4 @@ class pastJourneyDetailsModel(Base):
     aircraftId = Column(String, ForeignKey("aircraft.aircraftId"), nullable=False)
     ownerAirlineId = Column(String, ForeignKey("airline.airlineId"), nullable=False)
     sourceAirportId = Column(String, ForeignKey("airport.airportId"), nullable=False)
-    destinationAirport = Column(String, ForeignKey("Airport.airportId"), nullable=False)
+    destinationAirport = Column(String, ForeignKey("airport.airportId"), nullable=False)

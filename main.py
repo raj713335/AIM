@@ -6,8 +6,8 @@ from fastapi import FastAPI, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
-# from config.database import engine
-# from models import Base
+from config.database import engine
+from db_models import Base
 
 from routers.auth import get_user_info
 from schemas import userPayload
@@ -31,7 +31,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Base.metadata.create_all(bind=engine)
+Base.metadata.create_all(bind=engine)
 
 
 @app.get("/status/health")
