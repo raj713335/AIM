@@ -10,7 +10,6 @@ from schemas.aircraftSchema import aircraftSchema, aircraftPartSchema
 from ..auth import get_user_info
 from schemas.userPayload import userPayload
 
-
 router = APIRouter(
     prefix='/aircraft',
     tags=['Aircraft Details']
@@ -28,7 +27,10 @@ def get_db():
 db_dependency = Annotated[Session, Depends(get_db)]
 
 
-@router.get('/get_all_aircraft', status_code=status.HTTP_200_OK)
+# Aircraft Model
+
+
+@router.get('/get_all_aircraft_model', status_code=status.HTTP_200_OK)
 async def get_all_aircraft(db: db_dependency):
     try:
         # if user is None:
@@ -38,7 +40,7 @@ async def get_all_aircraft(db: db_dependency):
         raise HTTPException(status_code=401, detail=err)
 
 
-@router.get('/get_aircraft/{id}', status_code=status.HTTP_200_OK)
+@router.get('/get_aircraft_model/{id}', status_code=status.HTTP_200_OK)
 async def get_aircraft(db: db_dependency, id: str = Path):
     try:
         # if user is None:
@@ -48,7 +50,7 @@ async def get_aircraft(db: db_dependency, id: str = Path):
         raise HTTPException(status_code=401, detail=err)
 
 
-@router.post("/add_aircraft", status_code=status.HTTP_201_CREATED)
+@router.post("/add_aircraft_model", status_code=status.HTTP_201_CREATED)
 async def add_aircraft(db: db_dependency, aircraft_data: aircraftSchema):
     try:
         # if user is None:
@@ -64,7 +66,7 @@ async def add_aircraft(db: db_dependency, aircraft_data: aircraftSchema):
         raise HTTPException(status_code=401, detail=err)
 
 
-@router.put("/update_aircraft/{id}", status_code=status.HTTP_201_CREATED)
+@router.put("/update_aircraft_model/{id}", status_code=status.HTTP_201_CREATED)
 async def update_aircraft(db: db_dependency, aircraft_data: aircraftSchema, id: str = Path):
     try:
         # if user is None:
@@ -136,4 +138,3 @@ async def update_aircraft_part(db: db_dependency, aircraft_part_data: aircraftPa
         db.commit()
     except Exception as err:
         raise HTTPException(status_code=401, detail=err)
-
