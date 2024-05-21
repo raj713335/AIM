@@ -1,1 +1,3 @@
 from schemas.authConfiguration import authConfiguration
+from schemas.aircraftSchema import aircraftSchema
+from schemas.airbusSchema import sellAircraftSchema
