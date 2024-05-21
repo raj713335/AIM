@@ -52,7 +52,7 @@ async def validate_airline_details(db: db_dependency, airline_data: validate_air
             return airline_model
 
     except Exception as err:
-        raise HTTPException(status_code=401, detail=err)
+        return HTTPException(status_code=401, detail=err)
 
 
 @router.post("/add_airline_details", status_code=status.HTTP_201_CREATED)
@@ -82,7 +82,7 @@ async def update_airline_details(db: db_dependency, airline_data: airlineSchema,
         airline_model = db.query(airlineModel).filter(airlineModel.airlineId == id).first()
 
         if airline_model is None:
-            raise HTTPException(status_code=404, detail='Airline Not Found.')
+            return HTTPException(status_code=404, detail='Airline Not Found.')
 
         airline_model.airlineName = airline_data.airlineName
         airline_model.regionOperated = airline_data.regionOperated
