@@ -15,7 +15,13 @@
 ## 1. Project Architecture
 
 <p align="center">
-  <img src="data/AIM.png" />
+  <img src="data/architecture/AIM.png" />
+</p> 
+
+#### Chatbot Generative AI RAG (Retrieval Augment Generation) Architecture
+
+<p align="center">
+  <img src="data/architecture/RAG.png" />
 </p> 
 
 ## 2. Getting Started With The Fast API Application
