@@ -3,6 +3,7 @@ from llama_index.core.callbacks.base import CallbackManager
 from llama_index.embeddings.gemini import GeminiEmbedding
 from llama_index.llms.groq import Groq
 from llama_index.postprocessor.cohere_rerank import CohereRerank
+from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 import os
 import chainlit as cl
 from dotenv import load_dotenv
@@ -19,8 +20,8 @@ COHERE_API_KEY = os.getenv("COHERE_API_KEY")
 async def factory():
     storage_context = StorageContext.from_defaults(persist_dir="./storage_mini")
 
-    embed_model = GeminiEmbedding(
-        model_name="models/embedding-001", api_key=GOOGLE_API_KEY
+    embed_model = HuggingFaceEmbedding(
+        model_name="sentence-transformers/all-MiniLM-L6-v2"
     )
 
     llm = Groq(model="llama3-70b-8192", api_key=GROQ_API_KEY)
@@ -28,14 +29,14 @@ async def factory():
     service_context = ServiceContext.from_defaults(embed_model=embed_model, llm=llm,
                                                    callback_manager=CallbackManager([cl.LlamaIndexCallbackHandler()]),
                                                    )
-    cohere_rerank = CohereRerank(api_key=COHERE_API_KEY, top_n=2)
+    # cohere_rerank = CohereRerank(api_key=COHERE_API_KEY, top_n=2)
 
     index = load_index_from_storage(storage_context, service_context=service_context)
 
-    query_engine = index.as_query_engine(
+    query_engine = index.as_chat_engine(
         service_context=service_context,
-        similarity_top_k=10,
-        node_postprocessors=[cohere_rerank],
+        # similarity_top_k=10,
+        # node_postprocessors=[cohere_rerank],
         # streaming=True,
     )
 
@@ -45,7 +46,7 @@ async def factory():
 @cl.on_message
 async def main(message: cl.Message):
     query_engine = cl.user_session.get("query_engine")
-    response = await cl.make_async(query_engine.query)(message.content)
+    response = await cl.make_async(query_engine.chat)(message.content)
 
     response_message = cl.Message(content="")
 
