@@ -6,3 +6,4 @@ from routers.airport import airport
 from routers.aircraft import aircraft
 from routers.skill import skill
 from routers.airbus import airbus
+from routers.pilot import pilot

@@ -14,3 +14,4 @@ class airlineModel(Base):
 
     aircraft = relationship("aircraftModel", back_populates="ownerAirlines")
     aircraftPurchaseRecord = relationship("aircraftPurchaseRecordModel", back_populates="airline")
+    pilot = relationship("pilotModel", back_populates="airline")
