@@ -17,3 +17,4 @@ class repairHistoryModel(Base):
     repairDescription = Column(String, nullable=False)
 
     aircraft = relationship("aircraftModel", back_populates="repairHistory")
+    damage = relationship("damageModel", back_populates="repairHistory")

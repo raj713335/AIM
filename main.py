@@ -23,6 +23,7 @@ from routers.groundStaff import groundStaff
 from routers.pastJourneyDetails import pastJourneyDetails
 from routers.mroVendor import mroVendor
 from routers.repairHistory import repairHistory
+from routers.damage import damage
 
 
 load_dotenv()
@@ -68,7 +69,7 @@ app.include_router(groundStaff.router)
 app.include_router(pastJourneyDetails.router)
 app.include_router(mroVendor.router)
 app.include_router(repairHistory.router)
-
+app.include_router(damage.router)
 
 if __name__ == '__main__':
     uvicorn.run("main:app", host=os.getenv("AIM_APP_HOST", "localhost"), port=int(os.getenv("AIM_APP_PORT", 5000)),

@@ -1,6 +1,7 @@
+from typing import List
 from datetime import datetime
 from pydantic import BaseModel, Field
-
+from schemas.damageSchema import damageImportDisplaySchema
 
 
 class aircraftImportDisplaySchema(BaseModel):
@@ -10,7 +11,7 @@ class aircraftImportDisplaySchema(BaseModel):
 
 
 class repairHistorySchema(BaseModel):
-    aircraftId: str = Field(min_length=3, max_length=200)
+    aircraftId: str = Field(min_length=3, max_length=50)
     durationInHours: int
     startTime: str = Field(min_length=3, max_length=50)
     endTime: str = Field(min_length=3, max_length=50)
@@ -21,7 +22,7 @@ class repairHistorySchema(BaseModel):
 
 class repairHistoryImportDisplaySchema(BaseModel):
     repairInstanceId: str = Field(min_length=3, max_length=50)
-    aircraftId: str = Field(min_length=3, max_length=200)
+    aircraftId: str = Field(min_length=3, max_length=50)
     durationInHours: int
     startTime: datetime
     endTime: datetime
@@ -32,7 +33,7 @@ class repairHistoryImportDisplaySchema(BaseModel):
 
 class repairHistoryDisplaySchema(BaseModel):
     repairInstanceId: str = Field(min_length=3, max_length=50)
-    aircraftId: str = Field(min_length=3, max_length=200)
+    aircraftId: str = Field(min_length=3, max_length=50)
     durationInHours: int
     startTime: datetime
     endTime: datetime
@@ -41,4 +42,5 @@ class repairHistoryDisplaySchema(BaseModel):
     repairDescription: str = Field(min_length=3, max_length=50)
 
     aircraft: aircraftImportDisplaySchema
+    damage: List[damageImportDisplaySchema] = []
 

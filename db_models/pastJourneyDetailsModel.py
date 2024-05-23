@@ -17,4 +17,6 @@ class pastJourneyDetailsModel(Base):
     # sourceAirport = relationship("airportModel", back_populates="pastStartJourneyDetails")
     # destinationAirports = relationship("airportModel", back_populates="pastEndJourneyDetails")
 
+    damage = relationship("damageModel", back_populates="pastJourneyDetails")
+
 

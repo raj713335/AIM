@@ -1,5 +1,7 @@
 from datetime import datetime
+from typing import List
 from pydantic import BaseModel, Field
+from schemas.damageSchema import damageImportDisplaySchema
 
 
 class aircraftImportDisplaySchema(BaseModel):
@@ -47,3 +49,5 @@ class pastJourneyDetailsDisplaySchema(BaseModel):
     airline: airlineImportDisplaySchema
     # sourceAirport: airportImportDisplaySchema
     # destinationAirports: airportImportDisplaySchema
+
+    damage: List[damageImportDisplaySchema] = []
