@@ -6,7 +6,7 @@ from fastapi import Path
 from starlette import status
 from db_models import aircraftModelModel, aircraftPartModel, aircraftModel
 from config.database import SessionLocal
-from schemas.aircraftSchema import aircraftSchema, aircraftPartSchema, aircraftModelSchema, aircraftDisplaySchema, aircraftModelDisplaySchema
+from schemas.aircraftSchema import aircraftSchema, aircraftPartSchema, aircraftModelSchema, aircraftDisplaySchema, aircraftModelDisplaySchema, aircraftPartDisplaySchema
 from ..auth import get_user_info
 from schemas.userPayload import userPayload
 
@@ -125,7 +125,7 @@ async def update_aircraft_model(db: db_dependency, aircraft_data: aircraftModelS
         raise HTTPException(status_code=401, detail=err)
 
 
-@router.get('/get_all_aircraft_part', status_code=status.HTTP_200_OK)
+@router.get('/get_all_aircraft_part', response_model=List[aircraftPartDisplaySchema], status_code=status.HTTP_200_OK)
 async def get_all_aircraft_part(db: db_dependency):
     try:
         # if user is None:
@@ -135,7 +135,7 @@ async def get_all_aircraft_part(db: db_dependency):
         raise HTTPException(status_code=401, detail=err)
 
 
-@router.get('/get_aircraft_part/{id}', status_code=status.HTTP_200_OK)
+@router.get('/get_aircraft_part/{id}', response_model=aircraftPartDisplaySchema, status_code=status.HTTP_200_OK)
 async def get_aircraft_part(db: db_dependency, id: str = Path):
     try:
         # if user is None:
@@ -153,7 +153,7 @@ async def add_aircraft_part(db: db_dependency, aircraft_part_data: aircraftPartS
         aircraft_part_model = aircraftPartModel(
             partId=uuid.uuid4(),
             partName=aircraft_part_data.partName,
-            aircraftLinkedTo=aircraftPartSchema.aircraftLinkedTo
+            aircraftLinkedTo=aircraft_part_data.aircraftLinkedTo
         )
 
         db.add(aircraft_part_model)

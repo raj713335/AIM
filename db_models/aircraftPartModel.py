@@ -10,4 +10,4 @@ class aircraftPartModel(Base):
     partName = Column(String, nullable=False)
     aircraftLinkedTo = Column(String, ForeignKey("aircraft.aircraftModelId"), nullable=False)
 
-    #aircraft = relationship("aircraftModel", back_populates="aircraft")
+    aircraft = relationship("aircraftModel", back_populates="aircraftPartModel")

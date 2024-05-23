@@ -12,4 +12,4 @@ class aircraftModel(Base):
 
     aircraftModel = relationship("aircraftModelModel", back_populates="aircraft")
     ownerAirlines = relationship("airlineModel", back_populates="aircraft")
-    #aircraftPart = relationship("airlineModel", back_populates="aircraft")
+    aircraftPartModel = relationship("aircraftPartModel", back_populates="aircraft")

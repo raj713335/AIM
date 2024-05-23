@@ -30,6 +30,20 @@ class aircraftPartSchema(BaseModel):
     aircraftLinkedTo: str = Field(min_length=3, max_length=50)
 
 
+class aircraftPartImportDisplaySchema(BaseModel):
+    partId: str = Field(min_length=3, max_length=50)
+    partName: str = Field(min_length=3, max_length=50)
+    aircraftLinkedTo: str = Field(min_length=3, max_length=50)
+
+
+class aircraftPartDisplaySchema(BaseModel):
+    partId: str = Field(min_length=3, max_length=50)
+    partName: str = Field(min_length=3, max_length=50)
+    aircraftLinkedTo: str = Field(min_length=3, max_length=50)
+
+    aircraft: aircraftImportDisplaySchema
+
+
 class aircraftSchema(BaseModel):
     aircraftModelId: str = Field(min_length=3, max_length=50)
     ownerAirlineId: str = Field(min_length=3, max_length=50)
@@ -50,3 +64,4 @@ class aircraftDisplaySchema(BaseModel):
 
     aircraftModel: aircraftModelImportDisplaySchema
     ownerAirlines: airlineImportDisplaySchema
+    aircraftPartModel: List[aircraftPartImportDisplaySchema] = []
