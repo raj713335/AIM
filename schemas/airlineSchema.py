@@ -2,6 +2,7 @@ from typing import List
 from pydantic import BaseModel, Field
 from schemas.aircraftSchema import aircraftImportDisplaySchema, aircraftPurchaseRecordImportDisplaySchema
 from schemas.pilotSchema import pilotImportDisplaySchema
+from schemas.groundStaffSchema import groundStaffImportDisplaySchema
 
 
 class airlineSchema(BaseModel):
@@ -29,6 +30,7 @@ class airlineDisplaySchema(BaseModel):
     aircraft: List[aircraftImportDisplaySchema] = []
     aircraftPurchaseRecord: List[aircraftPurchaseRecordImportDisplaySchema] = []
     pilot: List[pilotImportDisplaySchema] = []
+    groundStaff: List[groundStaffImportDisplaySchema] = []
 
 
 class validate_airlineSchema(BaseModel):

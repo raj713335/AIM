@@ -10,6 +10,7 @@ class airlineImportDisplaySchema(BaseModel):
     airlineAdminUsername: str = Field(min_length=3, max_length=20)
     airlineAdminPassword: str = Field(min_length=3, max_length=20)
 
+
 class aircraftImportDisplaySchema(BaseModel):
     aircraftId: str = Field(min_length=3, max_length=50)
     aircraftModelId: str = Field(min_length=3, max_length=50)

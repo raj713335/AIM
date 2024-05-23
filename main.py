@@ -19,6 +19,7 @@ from routers.aircraft import aircraft
 from routers.skill import skill
 from routers.airbus import airbus
 from routers.pilot import pilot
+from routers.groundStaff import groundStaff
 
 
 load_dotenv()
@@ -60,6 +61,7 @@ app.include_router(aircraft.router)
 app.include_router(airbus.router)
 app.include_router(pilot.router)
 app.include_router(skill.router)
+app.include_router(groundStaff.router)
 
 
 if __name__ == '__main__':

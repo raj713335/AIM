@@ -1,5 +1,6 @@
 from config.database import Base
 from sqlalchemy import Column, String, ForeignKey, Date
+from sqlalchemy.orm import relationship
 
 
 class groundStaffModel(Base):
@@ -11,3 +12,6 @@ class groundStaffModel(Base):
     staffMemberDob = Column(Date, unique=True, nullable=False)
     employerAirlineId = Column(String, ForeignKey("airline.airlineId"), nullable=False)
     deployedAirportId = Column(String, ForeignKey("airport.airportId"), nullable=False)
+
+    airline = relationship("airlineModel", back_populates="groundStaff")
+    airport = relationship("airportModel", back_populates="groundStaff")
