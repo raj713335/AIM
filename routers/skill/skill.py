@@ -71,7 +71,7 @@ async def update_skill_details(db: db_dependency, skill_data: skillSchema, id: s
         skill_model = db.query(skillModel).filter(skillModel.skillId == id).first()
 
         if skill_model is None:
-            raise HTTPException(status_code=404, detail='Airport Not Found.')
+            raise HTTPException(status_code=404, detail='Skill Not Found.')
 
         skill_model.skillName = skill_data.skillName
 
@@ -79,3 +79,20 @@ async def update_skill_details(db: db_dependency, skill_data: skillSchema, id: s
         db.commit()
     except Exception as err:
         return HTTPException(status_code=401, detail=err)
+
+
+@router.delete("/delete_skill_details/{id}", status_code=status.HTTP_201_CREATED)
+async def delete_skill_details(db: db_dependency, id: str = Path):
+    try:
+        # if user is None:
+        #     raise HTTPException(status_code=401, detail='Authentication failed')
+        skill_model = db.query(skillModel).filter(skillModel.skillId == id).first()
+
+        if skill_model is None:
+            raise HTTPException(status_code=404, detail='Skill Not Found.')
+
+        db.query(skillModel).filter(skillModel.skillId == id).delete()
+        db.commit()
+    except Exception as err:
+        return HTTPException(status_code=401, detail=err)
+
