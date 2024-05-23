@@ -1,12 +1,12 @@
 import uuid
-from typing import Annotated
+from typing import Annotated, List
 from sqlalchemy.orm import Session
 from fastapi import APIRouter, Depends, HTTPException
 from fastapi import Path
 from starlette import status
 from db_models import airlineModel
 from config.database import SessionLocal
-from schemas.airlineSchema import airlineSchema, validate_airlineSchema
+from schemas.airlineSchema import airlineSchema, validate_airlineSchema, airlineDisplaySchema
 from ..auth import get_user_info
 from schemas.userPayload import userPayload
 
@@ -27,7 +27,7 @@ def get_db():
 db_dependency = Annotated[Session, Depends(get_db)]
 
 
-@router.get('/get_all_airline_details', status_code=status.HTTP_200_OK)
+@router.get('/get_all_airline_details', response_model=List[airlineDisplaySchema], status_code=status.HTTP_200_OK)
 async def get_all_airline_details(db: db_dependency):
     try:
         # if user is None:

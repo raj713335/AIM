@@ -1,10 +1,52 @@
+from typing import List
 from pydantic import BaseModel, Field
+# from schemas.airlineSchema import airlineDisplaySchema
 
 
-class aircraftSchema(BaseModel):
+class aircraftImportDisplaySchema(BaseModel):
+    aircraftId: str = Field(min_length=3, max_length=50)
+    aircraftModelId: str = Field(min_length=3, max_length=50)
+    ownerAirlineId: str = Field(min_length=3, max_length=50)
+
+
+class aircraftModelImportDisplaySchema(BaseModel):
+    aircraftModelId: str = Field(min_length=3, max_length=50)
+    modelName: str = Field(min_length=3, max_length=50)
+
+
+class aircraftModelDisplaySchema(BaseModel):
+    aircraftModelId: str = Field(min_length=3, max_length=50)
+    modelName: str = Field(min_length=3, max_length=50)
+
+    aircraft: List[aircraftImportDisplaySchema] = []
+
+
+class aircraftModelSchema(BaseModel):
     modelName: str = Field(min_length=3, max_length=50)
 
 
 class aircraftPartSchema(BaseModel):
     partName: str = Field(min_length=3, max_length=50)
     aircraftLinkedTo: str = Field(min_length=3, max_length=50)
+
+
+class aircraftSchema(BaseModel):
+    aircraftModelId: str = Field(min_length=3, max_length=50)
+    ownerAirlineId: str = Field(min_length=3, max_length=50)
+
+
+class airlineImportDisplaySchema(BaseModel):
+    airlineId: str = Field(min_length=3, max_length=50)
+    airlineName: str = Field(min_length=3, max_length=50)
+    regionOperated: str = Field(min_length=3, max_length=50)
+    airlineAdminUsername: str = Field(min_length=3, max_length=20)
+    airlineAdminPassword: str = Field(min_length=3, max_length=20)
+
+
+class aircraftDisplaySchema(BaseModel):
+    aircraftId: str = Field(min_length=3, max_length=50)
+    aircraftModelId: str = Field(min_length=3, max_length=50)
+    ownerAirlineId: str = Field(min_length=3, max_length=50)
+
+    aircraftModel: aircraftModelImportDisplaySchema
+    ownerAirlines: airlineImportDisplaySchema
