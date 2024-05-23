@@ -10,3 +10,6 @@ class airportModel(Base):
     airportName = Column(String, nullable=False)
 
     groundStaff = relationship("groundStaffModel", back_populates="airport")
+
+    # pastStartJourneyDetails = relationship("pastJourneyDetailsModel", back_populates="sourceAirport")
+    # pastEndJourneyDetails = relationship("pastJourneyDetailsModel", back_populates="destinationAirports")

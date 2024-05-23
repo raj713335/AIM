@@ -8,3 +8,4 @@ from routers.skill import skill
 from routers.airbus import airbus
 from routers.pilot import pilot
 from routers.groundStaff import groundStaff
+from routers.pastJourneyDetails import pastJourneyDetails

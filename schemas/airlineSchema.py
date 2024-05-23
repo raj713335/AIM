@@ -3,6 +3,7 @@ from pydantic import BaseModel, Field
 from schemas.aircraftSchema import aircraftImportDisplaySchema, aircraftPurchaseRecordImportDisplaySchema
 from schemas.pilotSchema import pilotImportDisplaySchema
 from schemas.groundStaffSchema import groundStaffImportDisplaySchema
+from schemas.pastJourneyDetailsSchema import pastJourneyDetailsImportDisplaySchema
 
 
 class airlineSchema(BaseModel):
@@ -31,6 +32,7 @@ class airlineDisplaySchema(BaseModel):
     aircraftPurchaseRecord: List[aircraftPurchaseRecordImportDisplaySchema] = []
     pilot: List[pilotImportDisplaySchema] = []
     groundStaff: List[groundStaffImportDisplaySchema] = []
+    pastJourneyDetails: List[pastJourneyDetailsImportDisplaySchema] = []
 
 
 class validate_airlineSchema(BaseModel):

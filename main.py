@@ -20,6 +20,7 @@ from routers.skill import skill
 from routers.airbus import airbus
 from routers.pilot import pilot
 from routers.groundStaff import groundStaff
+from routers.pastJourneyDetails import pastJourneyDetails
 
 
 load_dotenv()
@@ -62,6 +63,7 @@ app.include_router(airbus.router)
 app.include_router(pilot.router)
 app.include_router(skill.router)
 app.include_router(groundStaff.router)
+app.include_router(pastJourneyDetails.router)
 
 
 if __name__ == '__main__':
