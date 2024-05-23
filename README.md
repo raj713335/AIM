@@ -8,8 +8,18 @@
 
 # Features 
 
-- Aircraft Inspection and Monitoring.
+- <strong> Image Segmentation & Object Detection with YoloV9</strong>:  machine learning algorithms to assess the severity and extent of damage on aircraft surfaces, now it can detect.
+    
+```commandline
+  0: crack
+  1: dent
+  2: missing-head
+  3: paint-off
+  4: scratch
+```
 
+- <strong> RAG LLM Chatbot Model</strong>: Trained on Airbus data, to help operators & technicians find quick resolutions without having to read the entire Airbus operating & maintenance manual.
+- <strong> Image to Text</strong>: Using Google Gemini Pro, operators can upload a photo of an Aircraft Part that he is unaware of, and the LLM models will give them the details of that Aircraft Part.
 
 
 ## 1. Project Architecture
@@ -23,6 +33,15 @@
 <p align="center">
   <img src="data/architecture/RAG.png" />
 </p> 
+
+
+#### Database Entity–relationship Diagram
+
+<p align="center">
+  <img src="data/architecture/Airbus_ER_diagram.png" width="400"/>
+  <img src="data/architecture/Postgres.png" width="400"/>
+</p> 
+
 
 ## 2. Getting Started With The Fast API Application
 
@@ -73,6 +92,7 @@ $ npm i
   <li>KeyCloak 24.0.0</li>
   <li>Python 3.11.4</li>
 </ul>
+
 
 
 
