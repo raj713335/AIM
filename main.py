@@ -22,6 +22,7 @@ from routers.pilot import pilot
 from routers.groundStaff import groundStaff
 from routers.pastJourneyDetails import pastJourneyDetails
 from routers.mroVendor import mroVendor
+from routers.repairHistory import repairHistory
 
 
 load_dotenv()
@@ -66,6 +67,7 @@ app.include_router(skill.router)
 app.include_router(groundStaff.router)
 app.include_router(pastJourneyDetails.router)
 app.include_router(mroVendor.router)
+app.include_router(repairHistory.router)
 
 
 if __name__ == '__main__':

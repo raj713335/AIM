@@ -1,6 +1,7 @@
 from config.database import Base
 from sqlalchemy import Column, String, ForeignKey, Integer, Date
 from datetime import datetime
+from sqlalchemy.orm import relationship
 
 
 class repairHistoryModel(Base):
@@ -14,3 +15,5 @@ class repairHistoryModel(Base):
     costIncurredInDollars = Column(Integer, nullable=False)
     repairStatus = Column(String, nullable=False)
     repairDescription = Column(String, nullable=False)
+
+    aircraft = relationship("aircraftModel", back_populates="repairHistory")
