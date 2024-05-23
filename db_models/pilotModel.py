@@ -1,5 +1,6 @@
 from config.database import Base
 from sqlalchemy import Column, String, ForeignKey, Date
+from sqlalchemy.orm import relationship
 
 
 class pilotModel(Base):
@@ -10,3 +11,5 @@ class pilotModel(Base):
     pilotLastName = Column(String, nullable=False)
     pilotDob = Column(Date, unique=True, nullable=False)
     employerAirlineId = Column(String, ForeignKey("airline.airlineId"), nullable=False)
+
+    airline = relationship("airlineModel", back_populates="pilot")

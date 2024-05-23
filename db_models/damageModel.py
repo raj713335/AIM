@@ -1,6 +1,7 @@
 from config.database import Base
 from sqlalchemy import Column, String, ForeignKey, Date
 from datetime import datetime
+from sqlalchemy.orm import relationship
 
 
 class damageModel(Base):
@@ -13,3 +14,6 @@ class damageModel(Base):
     severityOfDamage = Column(String, nullable=False)
     repairInstance = Column(String, ForeignKey("repairHistory.repairInstanceId"), nullable=False)
     currentStatusOfDamage = Column(String, nullable=False)
+
+    pastJourneyDetails = relationship("pastJourneyDetailsModel", back_populates="damage")
+    repairHistory = relationship("repairHistoryModel", back_populates="damage")

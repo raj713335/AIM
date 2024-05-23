@@ -6,3 +6,10 @@ from routers.airport import airport
 from routers.aircraft import aircraft
 from routers.skill import skill
 from routers.airbus import airbus
+from routers.pilot import pilot
+from routers.groundStaff import groundStaff
+from routers.pastJourneyDetails import pastJourneyDetails
+from routers.mroVendor import mroVendor
+from routers.repairHistory import repairHistory
+from routers.damage import damage
+from routers.maintenanceHistory import maintenanceHistory

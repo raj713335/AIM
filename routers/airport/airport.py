@@ -1,12 +1,12 @@
 import uuid
-from typing import Annotated
+from typing import Annotated, List
 from sqlalchemy.orm import Session
 from fastapi import APIRouter, Depends, HTTPException
 from fastapi import Path
 from starlette import status
 from db_models import airportModel
 from config.database import SessionLocal
-from schemas.airportSchema import airportSchema
+from schemas.airportSchema import airportSchema, airportDisplaySchema
 from ..auth import get_user_info
 from schemas.userPayload import userPayload
 
@@ -27,7 +27,7 @@ def get_db():
 db_dependency = Annotated[Session, Depends(get_db)]
 
 
-@router.get('/get_all_airport_details', status_code=status.HTTP_200_OK)
+@router.get('/get_all_airport_details', response_model=List[airportDisplaySchema], status_code=status.HTTP_200_OK)
 async def get_all_airport_details(db: db_dependency):
     try:
         # if user is None:
@@ -37,7 +37,7 @@ async def get_all_airport_details(db: db_dependency):
         return HTTPException(status_code=401, detail=err)
 
 
-@router.get('/get_airport_details/{id}', status_code=status.HTTP_200_OK)
+@router.get('/get_airport_details/{id}', response_model=airportDisplaySchema, status_code=status.HTTP_200_OK)
 async def get_airport_details(db: db_dependency, id: str = Path):
     try:
         # if user is None:

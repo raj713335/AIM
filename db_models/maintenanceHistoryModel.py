@@ -1,6 +1,7 @@
 from config.database import Base
 from sqlalchemy import Column, String, ForeignKey, Integer, Date
 from datetime import datetime
+from sqlalchemy.orm import relationship
 
 
 class maintenanceHistoryModel(Base):
@@ -14,3 +15,6 @@ class maintenanceHistoryModel(Base):
     startTime = Column(Date, default=datetime.now, nullable=False)
     endTime = Column(String, default=datetime.now, nullable=False)
     costIncurredInDollars = Column(Integer, nullable=False)
+
+    aircraft = relationship("aircraftModel", back_populates="maintenanceHistory")
+    mroVendor = relationship("mroVendorModel", back_populates="maintenanceHistory")
