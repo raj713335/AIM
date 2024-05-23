@@ -3,6 +3,13 @@ from pydantic import BaseModel, Field
 # from schemas.airlineSchema import airlineDisplaySchema
 
 
+class airlineImportDisplaySchema(BaseModel):
+    airlineId: str = Field(min_length=3, max_length=50)
+    airlineName: str = Field(min_length=3, max_length=50)
+    regionOperated: str = Field(min_length=3, max_length=50)
+    airlineAdminUsername: str = Field(min_length=3, max_length=20)
+    airlineAdminPassword: str = Field(min_length=3, max_length=20)
+
 class aircraftImportDisplaySchema(BaseModel):
     aircraftId: str = Field(min_length=3, max_length=50)
     aircraftModelId: str = Field(min_length=3, max_length=50)
@@ -44,17 +51,30 @@ class aircraftPartDisplaySchema(BaseModel):
     aircraft: aircraftImportDisplaySchema
 
 
+class aircraftPurchaseRecordSchema(BaseModel):
+    airlineId: str = Field(min_length=3, max_length=50)
+    aircraftId: str = Field(min_length=3, max_length=50)
+    price: int
+
+
+class aircraftPurchaseRecordImportDisplaySchema(BaseModel):
+    airlineId: str = Field(min_length=3, max_length=50)
+    aircraftId: str = Field(min_length=3, max_length=50)
+    price: int
+
+
+class aircraftPurchaseRecordDisplaySchema(BaseModel):
+    airlineId: str = Field(min_length=3, max_length=50)
+    aircraftId: str = Field(min_length=3, max_length=50)
+    price: int
+
+    airline: airlineImportDisplaySchema
+    aircraft: aircraftImportDisplaySchema
+
+
 class aircraftSchema(BaseModel):
     aircraftModelId: str = Field(min_length=3, max_length=50)
     ownerAirlineId: str = Field(min_length=3, max_length=50)
-
-
-class airlineImportDisplaySchema(BaseModel):
-    airlineId: str = Field(min_length=3, max_length=50)
-    airlineName: str = Field(min_length=3, max_length=50)
-    regionOperated: str = Field(min_length=3, max_length=50)
-    airlineAdminUsername: str = Field(min_length=3, max_length=20)
-    airlineAdminPassword: str = Field(min_length=3, max_length=20)
 
 
 class aircraftDisplaySchema(BaseModel):
@@ -65,3 +85,4 @@ class aircraftDisplaySchema(BaseModel):
     aircraftModel: aircraftModelImportDisplaySchema
     ownerAirlines: airlineImportDisplaySchema
     aircraftPartModel: List[aircraftPartImportDisplaySchema] = []
+    aircraftPurchaseRecord: List[aircraftPurchaseRecordImportDisplaySchema] = []

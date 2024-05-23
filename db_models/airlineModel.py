@@ -13,3 +13,4 @@ class airlineModel(Base):
     airlineAdminPassword = Column(String, nullable=False)
 
     aircraft = relationship("aircraftModel", back_populates="ownerAirlines")
+    aircraftPurchaseRecord = relationship("aircraftPurchaseRecordModel", back_populates="airline")

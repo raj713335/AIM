@@ -4,9 +4,11 @@ from sqlalchemy.orm import Session
 from fastapi import APIRouter, Depends, HTTPException
 from fastapi import Path
 from starlette import status
-from db_models import aircraftModelModel, aircraftPartModel, aircraftModel
+from db_models import aircraftModelModel, aircraftPartModel, aircraftModel, aircraftPurchaseRecordModel
 from config.database import SessionLocal
-from schemas.aircraftSchema import aircraftSchema, aircraftPartSchema, aircraftModelSchema, aircraftDisplaySchema, aircraftModelDisplaySchema, aircraftPartDisplaySchema
+from schemas.aircraftSchema import (aircraftSchema, aircraftPartSchema, aircraftModelSchema, aircraftDisplaySchema,
+                                    aircraftModelDisplaySchema, aircraftPartDisplaySchema,
+                                    aircraftPurchaseRecordDisplaySchema, aircraftPurchaseRecordSchema)
 from ..auth import get_user_info
 from schemas.userPayload import userPayload
 
@@ -179,3 +181,64 @@ async def update_aircraft_part(db: db_dependency, aircraft_part_data: aircraftPa
         db.commit()
     except Exception as err:
         raise HTTPException(status_code=401, detail=err)
+
+
+# Aircraft Purchase Record
+
+
+@router.get('/get_all_aircraft_purchase_record', response_model=List[aircraftPurchaseRecordDisplaySchema], status_code=status.HTTP_200_OK)
+async def get_all_aircraft_purchase_record(db: db_dependency):
+    try:
+        # if user is None:
+        #     raise HTTPException(status_code=401, detail='Authentication Failed')
+        return db.query(aircraftPurchaseRecordModel).all()
+    except Exception as err:
+        raise HTTPException(status_code=401, detail=err)
+
+
+@router.get('/get_aircraft_purchase_record/{id}', response_model=aircraftPurchaseRecordDisplaySchema, status_code=status.HTTP_200_OK)
+async def get_aircraft_purchase_record(db: db_dependency, id: str = Path):
+    try:
+        # if user is None:
+        #     raise HTTPException(status_code=401, detail='Authentication Failed')
+        return db.query(aircraftPurchaseRecordModel).filter(aircraftPurchaseRecordModel.aircraftId == id).first()
+    except Exception as err:
+        raise HTTPException(status_code=401, detail=err)
+
+
+@router.post("/add_aircraft_purchase_record", status_code=status.HTTP_201_CREATED)
+async def add_aircraft_purchase_record(db: db_dependency, aircraft_purchase_data: aircraftPurchaseRecordSchema):
+    try:
+        # if user is None:
+        #     raise HTTPException(status_code=401, detail='Authentication failed')
+        aircraft_purchase_record_model = aircraftPurchaseRecordModel(
+            airlineId=aircraft_purchase_data.airlineId,
+            aircraftId=aircraft_purchase_data.aircraftId,
+            price=aircraft_purchase_data.price
+        )
+
+        db.add(aircraft_purchase_record_model)
+        db.commit()
+    except Exception as err:
+        raise HTTPException(status_code=401, detail=err)
+
+
+@router.put("/update_aircraft_purchase_record/{id}", status_code=status.HTTP_201_CREATED)
+async def update_aircraft_purchase_record(db: db_dependency, aircraft_purchase_data: aircraftPurchaseRecordSchema, id: str = Path):
+    try:
+        # if user is None:
+        #     raise HTTPException(status_code=401, detail='Authentication failed')
+        aircraft_purchase_record_model = db.query(aircraftPurchaseRecordModel).filter(aircraftPurchaseRecordModel.aircraftId == id).first()
+
+        if aircraft_purchase_record_model is None:
+            raise HTTPException(status_code=404, detail='Aircraft Purchase Record Not Found.')
+
+        aircraft_purchase_record_model.airlineId = aircraft_purchase_data.airlineId
+        aircraft_purchase_record_model.aircraftId = aircraft_purchase_data.aircraftId
+        aircraft_purchase_record_model.price = aircraft_purchase_data.price
+
+        db.add(aircraft_purchase_record_model)
+        db.commit()
+    except Exception as err:
+        raise HTTPException(status_code=401, detail=err)
+
