@@ -24,6 +24,15 @@
   <img src="data/architecture/RAG.png" />
 </p> 
 
+
+#### Database Entity–relationship Diagram
+
+<p align="center">
+  <img src="data/architecture/Airbus_ER_diagram.png" width="400"/>
+  <img src="data/architecture/Postgres.png" width="400"/>
+</p> 
+
+
 ## 2. Getting Started With The Fast API Application
 
 ```sh
@@ -73,6 +82,7 @@ $ npm i
   <li>KeyCloak 24.0.0</li>
   <li>Python 3.11.4</li>
 </ul>
+
 
 
 
