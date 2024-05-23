@@ -16,3 +16,4 @@ class aircraftModel(Base):
     aircraftPurchaseRecord = relationship("aircraftPurchaseRecordModel", back_populates="aircraft")
     pastJourneyDetails = relationship("pastJourneyDetailsModel", back_populates="aircraft")
     repairHistory = relationship("repairHistoryModel", back_populates="aircraft")
+    maintenanceHistory = relationship("maintenanceHistoryModel", back_populates="aircraft")

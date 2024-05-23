@@ -1,5 +1,6 @@
 from typing import List
 from pydantic import BaseModel, Field
+from schemas.maintenanceHistorySchema import maintenanceHistoryImportDisplaySchema
 
 
 class airportImportDisplaySchema(BaseModel):
@@ -24,3 +25,4 @@ class mroVendorDisplaySchema(BaseModel):
     mroAirportId: str = Field(min_length=3, max_length=50)
 
     airport: airportImportDisplaySchema
+    maintenanceHistory: List[maintenanceHistoryImportDisplaySchema] = []

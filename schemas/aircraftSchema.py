@@ -2,6 +2,7 @@ from typing import List
 from pydantic import BaseModel, Field
 from schemas.pastJourneyDetailsSchema import pastJourneyDetailsImportDisplaySchema
 from schemas.repairHistorySchema import repairHistoryImportDisplaySchema
+from schemas.maintenanceHistorySchema import maintenanceHistoryImportDisplaySchema
 
 
 class airlineImportDisplaySchema(BaseModel):
@@ -90,3 +91,4 @@ class aircraftDisplaySchema(BaseModel):
     aircraftPurchaseRecord: List[aircraftPurchaseRecordImportDisplaySchema] = []
     pastJourneyDetails: List[pastJourneyDetailsImportDisplaySchema] = []
     repairHistory: List[repairHistoryImportDisplaySchema] = []
+    maintenanceHistory: List[maintenanceHistoryImportDisplaySchema] = []

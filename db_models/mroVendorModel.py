@@ -11,3 +11,4 @@ class mroVendorModel(Base):
     mroAirportId = Column(String, ForeignKey("airport.airportId"), nullable=False)
 
     airport = relationship("airportModel", back_populates="mroVendor")
+    maintenanceHistory = relationship("maintenanceHistoryModel", back_populates="mroVendor")
