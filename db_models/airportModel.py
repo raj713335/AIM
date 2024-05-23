@@ -13,3 +13,5 @@ class airportModel(Base):
 
     # pastStartJourneyDetails = relationship("pastJourneyDetailsModel", back_populates="sourceAirport")
     # pastEndJourneyDetails = relationship("pastJourneyDetailsModel", back_populates="destinationAirports")
+
+    mroVendor = relationship("mroVendorModel", back_populates="airport")
