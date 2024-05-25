@@ -3,7 +3,8 @@
 ### PROBLEM STATEMENT
 
 
-<strong>AIM</strong> Aircraft Inspection and Monitoring 
+<strong>AIM</strong> A Two-Level CRM and Aircraft Inspection and Monitoring Software with state-of-the-art damage detection models that take care of the entire lifecycle of Aircraft Maintenance, Inspection & Repair, providing insights to a persona at a different level. 
+
 
 
 # Features 
@@ -18,8 +19,9 @@
   4: scratch
 ```
 
-- <strong> RAG LLM Chatbot Model</strong>: Trained on Airbus data, to help operators & technicians find quick resolutions without having to read the entire Airbus operating & maintenance manual.
+- <strong> RAG LLM Chatbot Model</strong>: Trained on Airbus data, to help operators & technicians find quick resolutions without reading the entire Airbus operating & maintenance manual.
 - <strong> Image to Text</strong>: Using Google Gemini Pro, operators can upload a photo of an Aircraft Part that he is unaware of, and the LLM models will give them the details of that Aircraft Part.
+- <strong> CRM Software</strong>: helps Airlines, MROs, and Airbus to maintain all customer-related data at one single place and drive their customer success journey through insightful analytics.
 
 
 ## 1. Project Architecture
@@ -150,4 +152,5 @@ $ npm i
 ## 8. Components to be built (Work In Progress)
 
 * [x] API Enhancement.
-
+* [x] API Optimization.
+* [x] Connecting API with creo 3D Software.
