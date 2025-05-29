@@ -1,7 +1,7 @@
 <h1 align="center"><strong>AIM</strong> (Aircraft Inspection and Monitoring)</h1>
 
 
-<strong>AIM</strong> A Two-Level CRM and Aircraft Inspection and Monitoring Software with state-of-the-art damage detection models that take care of the entire lifecycle of Aircraft Maintenance, Inspection & Repair, providing insights to a persona at a different level. 
+<strong>AIM</strong> A Two-Level CRM and Aircraft Inspection & Monitoring Software with state-of-the-art damage detection models that take care of the entire lifecycle of Aircraft Maintenance, Inspection & Repair, providing insights to a persona at a different level. 
 
 
 
